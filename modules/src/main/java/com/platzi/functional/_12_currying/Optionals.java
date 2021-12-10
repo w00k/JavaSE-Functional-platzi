@@ -39,6 +39,7 @@ public class Optionals {
         return -1;
     }
 
+    /*
     public static void main(String[] args) {
         List<String> names = getNames();
         if(names != null) {
@@ -53,6 +54,7 @@ public class Optionals {
         optionalNames.ifPresent(namesValues -> namesValues.forEach(System.out::println));
 
         Optional<String> valuablePlayer = optionalValuablePlayer();
-        String valuablePlayerName = valuablePlayer.orElse(() -> "No Player");
+        //String valuablePlayerName = valuablePlayer.orElse(() -> "No Player");
     }
+     */
 }
