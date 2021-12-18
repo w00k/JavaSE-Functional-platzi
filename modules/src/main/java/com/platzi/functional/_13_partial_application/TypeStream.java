@@ -93,4 +93,61 @@ public class TypeStream {
     * y la memoria del Stream.
     *
     * */
+
+    /*
+    * TODO
+    *  Existen 2 tipos de operaciones, la intermedias y las finales.
+    *
+    * Operación intermedia a toda operación dentro de un Stream que como resultado devuelva un nuevo Stream. Es decir,
+    * tras invocar una operación intermedia con un cierto tipo de dato, obtendremos como resultado un nuevo Stream
+    * conteniendo los datos ya modificados.
+    * El Stream que recibe la operación intermedia pasa a ser “consumido” posterior a la invocación de la operación,
+    * quedando inutilizable para posteriores operaciones. Si decidimos usar el Stream para algún otro tipo de
+    * operaciones tendremos un IllegalStateException.
+    *
+    * Operaciones disponibles:
+    * filter(...)
+    Filtra el stream como por ejemplo
+    Stream filter(Predicatesuper T> predicate) --- de vuelve un tipo T --- clase 11
+    Mientras más sencillo sean los filtros, más legible sera tu codigo
+
+    * map(...)
+    Stream map(Functionsuper T, ? extends R> mapper) --- toma u tipo T y generará un tipo R
+    Stream ids = DatabaseUtils.getIds().stream();
+    Stream users = ids.map(id -> db.getUserWithId(id));
+    Esto es bastante practico cuando queremos hacer alguna conversión de datos y realmente no nos interese el dato
+    completo, solo partes de él o si queremos convertir un dato complejo partiendo de un dato base.
+
+    * flatMap(...)
+    Pasa de Stream a Stream y simplifica la estructura del Stream.
+    flatMap toma el Stream y usará el resultado de mapper para “acumular” elementos en un Stream desde otro Stream.
+
+    * distinct(...)
+    Lo que hace es comparar cada elemento del Stream contra el resto usando el método equals. De esta manera, evita
+    que el Stream contenga elementos duplicados. La operación, al ser intermedia, retorna un nuevo Stream donde los
+    elementos son únicos. Recuerda que para garantizar esto es recomendable que sobrescribas el método equals en tus
+    clases que representen datos.
+
+    * limit(...)
+    La operación limit recibe un long que determina cuántos elementos del Stream original seran preservados. Si el
+    número es mayor a la cantidad inicial de elementos en el Stream, básicamente, todos los elementos seguirán en el
+    Stream. Un detalle interesante es que algunas implementaciones de Stream pueden estar ordenadas (sorted()) o
+    explícitamente no ordenadas (unordered()), lo que puede cambiar drásticamente el resultado de la operación
+    y el performance.
+
+    * peek(...)
+    peek funciona como una lupa, como un momento de observación de lo que está pasando en el Stream. Lo que hace esta
+    operación es tomar un Consumer, pasar los datos conforme van estando presentes en el Stream y generar un nuevo
+    Stream idéntico para poder seguir operando.
+
+    * skip(...)
+    Esta operación es contraria a limit(). Mientras limit() reduce los elementos presentes en el Stream a un numero
+    especifico, skip descarta los primeros n elementos y genera un Stream con los elementos restantes en el Stream.
+
+    * sorted(...)
+    La operación sorted() requiere que los elementos presentes en el Stream implementen la interfaz Comparable para
+    poder hacer un ordenamiento de manera natural dentro del Stream. El Stream resultante contiene todos los elementos
+    pero ya ordenados, hacer un ordenamiento tiene muchas ventajas.
+
+    * */
 }
