@@ -149,5 +149,16 @@ public class TypeStream {
     poder hacer un ordenamiento de manera natural dentro del Stream. El Stream resultante contiene todos los elementos
     pero ya ordenados, hacer un ordenamiento tiene muchas ventajas.
 
+    *
+    Las operaciones intermedias nos permiten tener control sobre los streams y manipular sus contenidos de manera
+    sencilla sin preocuparnos realmente por cómo se realizan los cambios.
+
+    Recuerda que las operaciones intermedias tienen la funcionalidad de generar nuevos streams que podremos dar como
+    resultado para que otras partes del código los puedan utilizar.
+
+    Aunque existen otras operaciones intermedias en diferentes implementaciones de Stream, las que aquí listamos están
+    presentes en la interfaz base, por lo que entender estas operaciones te facilitara la vida en la mayoría de los
+    usos de Stream.
+
     * */
 }
