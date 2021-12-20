@@ -1,5 +1,6 @@
 package com.platzi.functional._13_partial_application;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -7,10 +8,12 @@ public class TypeStream {
 
     public static void main(String[] args) {
         IntStream infiniteStream = IntStream.iterate(0, x -> x + 1);
-        infiniteStream.limit(1000)
-                .parallel() //opcion para ejecutar de una forma concurrente, mejor para miles y millones, no usar con pocos datos o que te importe el orden de los datos
+        List<Integer> numberList = infiniteStream.limit(1000)
+                //.parallel() //opcion para ejecutar de una forma concurrente, mejor para miles y millones, no usar con pocos datos o que te importe el orden de los datos
                 .filter(x -> x % 2 == 0)
-                .forEach(System.out::println);
+                .boxed()
+                //.forEach(System.out::println);
+                .collect(Collectors.toList());
     }
 
     /* TODO
