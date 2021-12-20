@@ -9,11 +9,13 @@ public class TypeStream {
     public static void main(String[] args) {
         IntStream infiniteStream = IntStream.iterate(0, x -> x + 1);
         List<Integer> numberList = infiniteStream.limit(1000)
-                //.parallel() //opcion para ejecutar de una forma concurrente, mejor para miles y millones, no usar con pocos datos o que te importe el orden de los datos
-                .filter(x -> x % 2 == 0)
+                .parallel() //opcion para ejecutar de una forma concurrente, mejor para miles y millones, no usar con pocos datos o que te importe el orden de los datos
+                //.filter(x -> x % 2 == 0)
                 .boxed()
                 //.forEach(System.out::println);
                 .collect(Collectors.toList());
+
+        numberList.forEach(System.out::println);
     }
 
     /* TODO
